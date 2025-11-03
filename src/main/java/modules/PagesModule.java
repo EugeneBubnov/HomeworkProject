@@ -1,0 +1,29 @@
+package modules;
+
+import com.google.inject.AbstractModule;
+import com.google.inject.Provides;
+import com.google.inject.Singleton;
+import org.openqa.selenium.WebDriver;
+import pages.CoursesPage;
+import pages.MainPage;
+
+// В модуле определяются бины страниц
+public class PagesModule extends AbstractModule {
+    private final WebDriver driver;
+
+    public PagesModule(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    @Provides
+    @Singleton
+    public MainPage getMainPage(){
+        return new MainPage(driver);
+    }
+
+    @Provides
+    @Singleton
+    public CoursesPage getCoursesPage(){
+        return new CoursesPage(driver);
+    }
+}
