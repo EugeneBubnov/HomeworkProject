@@ -37,7 +37,7 @@ public abstract class AbsCommon {
     }
 
     public AbsCommon shouldBeVisible(WebElement element) {
-        wait.until(d -> element.isDisplayed());
+        wait.until(ExpectedConditions.visibilityOf(element));
         return this;
     }
 
