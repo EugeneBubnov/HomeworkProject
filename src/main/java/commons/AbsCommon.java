@@ -37,12 +37,12 @@ public abstract class AbsCommon {
     }
 
     public AbsCommon shouldBeVisible(WebElement element) {
-        this.wait.until(d -> element.isDisplayed());
+        wait.until(d -> element.isDisplayed());
         return this;
     }
 
     public AbsCommon hover(WebElement element) {
-        this.js.executeScript("arguments[0].scrollIntoView({block: 'center', inline: 'center'});", element);
+        js.executeScript("arguments[0].scrollIntoView({block: 'center', inline: 'center'});", element);
         waitSomeTime(1000);
         return this;
     }
