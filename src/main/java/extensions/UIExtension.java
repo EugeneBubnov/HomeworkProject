@@ -28,7 +28,7 @@ public class UIExtension implements BeforeEachCallback, AfterEachCallback {
     @Override
     public void afterEach(ExtensionContext context) {
         if (driver != null) {
-            //driver.quit();
+            driver.quit();
         }
     }
 }
