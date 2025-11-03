@@ -1,4 +1,4 @@
-package pages;
+package models;
 
 public class CourseCard {
     private String name, date;
