@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -20,7 +22,7 @@ public class CoursesPage extends AbsBasePage<CoursesPage> {
     @FindBy(xpath = "//h6/div")
     protected List<WebElement> courseNames;
 
-    @FindBy(xpath = "//h6/div/ancestor::h6/following-sibling::div/div/div")
+    @FindBy(xpath = "//h6/following-sibling::div/div/div")
     protected List<WebElement> courseDates;
 
     public CoursesPage clickElementByName(String courseName) {
@@ -52,9 +54,13 @@ public class CoursesPage extends AbsBasePage<CoursesPage> {
     }
 
     public CoursesPage findAllCoursesByRequirements() {
+        LocalDate date = LocalDate.now();
+
+        String currentYear = String.valueOf(date.getYear());
+
         List<Integer> allCourseDates = new ArrayList<>();
         courseDates.stream()
-                .filter(e -> e.getText().contains("2025"))
+                .filter(e -> e.getText().contains(currentYear))
                 .forEach(webElement ->
                         allCourseDates.add(Integer.parseInt(webElement.getText()
                                 .split("·")[0]
@@ -62,8 +68,7 @@ public class CoursesPage extends AbsBasePage<CoursesPage> {
                                 .trim()))
                 );
 
-        Integer minDate = allCourseDates.stream()
-                .reduce((a, b) -> a < b ? a : b).get();
+        Integer minDate = allCourseDates.stream().reduce((a, b) -> a < b ? a : b).get();
         List<Integer> earlyCourses = allCourseDates.stream()
                 .filter(currentCourse -> currentCourse.equals(minDate))
                 .toList();
@@ -82,7 +87,7 @@ public class CoursesPage extends AbsBasePage<CoursesPage> {
          */
         Set<Integer> seen = new HashSet<>();
         List<Integer> duplicateDates = allCourseDates.stream()
-                .filter(n -> !seen.add(n))//если seen.add(n) вернёт false
+                .filter(n -> !seen.add(n))
                 .distinct()
                 .toList();
 
