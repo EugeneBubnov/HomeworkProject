@@ -1,11 +1,13 @@
 package pages;
 
 import annotations.Path;
+import com.google.inject.Inject;
 import models.CourseCard;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import support.GuiceScoped;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -15,8 +17,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Path("/catalog/courses")
 public class CoursesPage extends AbsBasePage<CoursesPage> {
 
-    public CoursesPage(WebDriver driver) {
-        super(driver);
+    @Inject
+    public CoursesPage(GuiceScoped guiceScoped) {
+        super(guiceScoped);
     }
 
     @FindBy(xpath = "//h6/div")

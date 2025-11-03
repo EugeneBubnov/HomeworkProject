@@ -8,6 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import support.GuiceScoped;
 
 import java.time.Duration;
 import java.util.List;
@@ -21,8 +22,8 @@ public abstract class AbsCommon {
 
     protected JavascriptExecutor js;
 
-    public AbsCommon(WebDriver driver) {
-        this.driver = driver;
+    public AbsCommon(GuiceScoped guiceScoped) {
+        this.driver = guiceScoped.getDriver();
         this.actions = new Actions(driver);
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         this.js = (JavascriptExecutor) driver;

@@ -18,11 +18,13 @@
         <webdrivermanager.version>6.3.2</webdrivermanager.version>
         <guice.version>7.0.0</guice.version>
         <assertJ.version>3.27.6</assertJ.version>
+        <cucumber.java.version>7.31.0</cucumber.java.version>
 
         <maven.version>3.14.1</maven.version>
         <surefire.version>3.5.4</surefire.version>
 
         <base.url>https://otus.ru</base.url>
+        <browser>chrome</browser>
 
     </properties>
 
@@ -52,6 +54,33 @@
             <artifactId>assertj-core</artifactId>
             <version>${assertJ.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.junit/junit-bom -->
+        <dependency>
+            <groupId>org.junit</groupId>
+            <artifactId>junit-bom</artifactId>
+            <version>${junit.version}</version>
+            <type>pom</type>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber.java.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit-platform-engine -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit-platform-engine</artifactId>
+            <version>${cucumber.java.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-guice -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-guice</artifactId>
+            <version>${cucumber.java.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -72,6 +101,7 @@
                 <configuration>
                     <systemPropertyVariables>
                         <base.url>${base.url}</base.url>
+                        <browser>${browser}</browser>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>

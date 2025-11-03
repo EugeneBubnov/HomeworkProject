@@ -1,18 +1,20 @@
 package pages;
 
 import annotations.Path;
+import com.google.inject.Inject;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import support.GuiceScoped;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Path("/")
 public class MainPage extends AbsBasePage<MainPage> {
 
-    public MainPage(WebDriver driver) {
-        super(driver);
+    @Inject
+    public MainPage(GuiceScoped guiceScoped) {
+        super(guiceScoped);
     }
 
     @FindBy(css = "[title='Обучение']")
