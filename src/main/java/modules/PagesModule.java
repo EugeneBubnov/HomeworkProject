@@ -7,7 +7,6 @@ import org.openqa.selenium.WebDriver;
 import pages.CoursesPage;
 import pages.MainPage;
 
-// В модуле определяются бины страниц
 public class PagesModule extends AbstractModule {
     private final WebDriver driver;
 

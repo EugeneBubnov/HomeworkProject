@@ -52,8 +52,6 @@ public class CoursesPage extends AbsBasePage<CoursesPage> {
     }
 
     public CoursesPage findAllCoursesByRequirements() {
-        // courseDates.stream().forEach(e -> System.out.println(e.getText()));
-
         List<Integer> allCourseDates = new ArrayList<>();
         courseDates.stream()
                 .filter(e -> e.getText().contains("2025"))
@@ -75,8 +73,8 @@ public class CoursesPage extends AbsBasePage<CoursesPage> {
                 .filter(e -> e.equals(maxDate))
                 .toList();
 
-        // todo: Даты, которые совпали
         /*
+        Даты, которые совпали
         Для каждого элемента n из списка:
         seen.add(n) пытается добавить число в множество, а!seen.add(n) инвертирует результат:
         - Если seen.add(n) вернул false (число УЖЕ было в множестве) → !false = true → элемент ПРОХОДИТ фильтр
@@ -87,7 +85,6 @@ public class CoursesPage extends AbsBasePage<CoursesPage> {
                 .filter(n -> !seen.add(n))//если seen.add(n) вернёт false
                 .distinct()
                 .toList();
-
 
         System.out.println(String.format("\nAll dates: %s\nMin dates: %s\nMax dates: %s\nDuplicate dates: %s",
                 allCourseDates, earlyCourses, lateCourses, duplicateDates)
@@ -103,13 +100,6 @@ public class CoursesPage extends AbsBasePage<CoursesPage> {
             cardList.add(new CourseCard(courseNames.get(i).getText(), courseDates.get(i).getText()));
         }
 
-        /*
-        for (CourseCard e : cardList) {
-            System.out.println(e.getName() + "\n" + e.getDate() + "\n");
-        }
-         */
-
-        //min
         List<Integer> allCourses = new ArrayList<>();
         courseDates.stream()
                 .filter(e -> e.getText().contains("2025"))
@@ -131,7 +121,7 @@ public class CoursesPage extends AbsBasePage<CoursesPage> {
                     headingIsValid(e.getName());
                     dateIsValid(e.getDate().split(",")[0]);
                 });
-/*
+        /*
         for (CourseCard e : allCoursesInfo) {
             if (e.getDate().contains(String.valueOf(earlyCourses.getFirst()))) {
                 clickElementByName(e.getName());
@@ -140,7 +130,7 @@ public class CoursesPage extends AbsBasePage<CoursesPage> {
                 break;
             }
         }
- */
+        */
         js.executeScript("window.history.back();");
         waitSomeTime(2000);
 
@@ -166,8 +156,5 @@ public class CoursesPage extends AbsBasePage<CoursesPage> {
             }
         }
          */
-
-        js.executeScript("window.history.back();");
-        waitSomeTime(2000);
     }
 }

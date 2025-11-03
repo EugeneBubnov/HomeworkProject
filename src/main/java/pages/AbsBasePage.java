@@ -24,11 +24,6 @@ public abstract class AbsBasePage<T> extends AbsCommon {
         throw new PathNotFoundException();
     }
 
-    /**
-     * Переход по прямому path => /path
-     *
-     * @return текущий класс
-     */
     public T open() {
         driver.get(baseUrl + getPath());
 

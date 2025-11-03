@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Path("/")
 public class MainPage extends AbsBasePage<MainPage> {
@@ -42,6 +41,4 @@ public class MainPage extends AbsBasePage<MainPage> {
 
         return this;
     }
-
-
 }
