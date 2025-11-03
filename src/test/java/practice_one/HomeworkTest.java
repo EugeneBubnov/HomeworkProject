@@ -1,10 +1,11 @@
-package PracticeOne;
+package practice_one;
 
 import com.google.inject.Inject;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import extensions.UIExtension;
+import pages.CoursePage;
 import pages.CoursesPage;
 import pages.MainPage;
 
@@ -13,6 +14,8 @@ public class HomeworkTest {
 
     @Inject
     private CoursesPage coursesPage;
+    @Inject
+    private CoursePage coursePage;
 
     @Inject
     private MainPage mainPage;
@@ -24,8 +27,9 @@ public class HomeworkTest {
     void findCourseTest() {
         coursesPage
                 .open()
-                .clickElementByName(neededCourse[0])
-                .headingIsValid(neededCourse[0]);
+                .clickElementByName(neededCourse[0]);
+
+        coursePage.headingIsValid(neededCourse[0]);
     }
 
     @Test

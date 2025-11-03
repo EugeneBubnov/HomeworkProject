@@ -22,6 +22,9 @@ public class CoursesPage extends AbsBasePage<CoursesPage> {
         super(guiceScoped);
     }
 
+    @Inject
+    private CoursePage coursePage;
+
     @FindBy(xpath = "//h6/div")
     protected List<WebElement> courseNames;
 
@@ -39,21 +42,6 @@ public class CoursesPage extends AbsBasePage<CoursesPage> {
         currentCourse.click();
 
         return this;
-    }
-
-    @FindBy(tagName = "h1")
-    protected WebElement heading;
-
-    public void headingIsValid(String headerName) {
-        shouldBeVisible(heading);
-        assertEquals(headerName, heading.getText());
-    }
-
-    public void dateIsValid(String date) {
-        WebElement webDate = driver.findElement(By.xpath("//div/p[.='" + date + "']"));
-        hover(webDate);
-        shouldBeVisible(webDate);
-        assertEquals(date, webDate.getText());
     }
 
     public CoursesPage findAllCoursesByRequirements() {
@@ -126,19 +114,11 @@ public class CoursesPage extends AbsBasePage<CoursesPage> {
                 .forEach(e -> {
                     System.out.println(String.format("Курс с минимальной датой: %s(%s)", e.getName(), e.getDate()));
                     clickElementByName(e.getName());
-                    headingIsValid(e.getName());
-                    dateIsValid(e.getDate().split(",")[0]);
+
+                    coursePage.headingIsValid(e.getName());
+                    coursePage.dateIsValid(e.getDate().split(",")[0]);
                 });
-        /*
-        for (CourseCard e : allCoursesInfo) {
-            if (e.getDate().contains(String.valueOf(earlyCourses.getFirst()))) {
-                clickElementByName(e.getName());
-                headingIsValid(e.getName());
-                dateIsValid(e.getDate().split(",")[0]);
-                break;
-            }
-        }
-        */
+
         js.executeScript("window.history.back();");
         waitSomeTime(2000);
 
@@ -150,19 +130,22 @@ public class CoursesPage extends AbsBasePage<CoursesPage> {
                 .forEach(e -> {
                     System.out.println(String.format("Курс с максимальной датой: %s(%s)", e.getName(), e.getDate()));
                     clickElementByName(e.getName());
-                    headingIsValid(e.getName());
-                    dateIsValid(e.getDate().split(",")[0]);
+
+                    coursePage.headingIsValid(e.getName());
+                    coursePage.dateIsValid(e.getDate().split(",")[0]);
                 });
 
-        /*
-        for (CourseCard e : allCoursesInfo) {
-            if (e.getDate().contains(String.valueOf(lateCourses.getFirst()))) {
-                clickElementByName(e.getName());
-                headingIsValid(e.getName());
-                dateIsValid(e.getDate().split(",")[0]);
-                break;
-            }
-        }
-         */
     }
+
+    private String getText(WebElement webElement) {
+        hover(webElement);
+        return webElement.getText();
+    }
+
+    public String getRandomCourseTitle() {
+        int index = (int) (Math.random() * courseNames.size());
+
+        return getText(courseNames.get(index));
+    }
+
 }
