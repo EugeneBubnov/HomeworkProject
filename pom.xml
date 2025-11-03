@@ -23,6 +23,7 @@
         <surefire.version>3.5.4</surefire.version>
 
         <base.url>https://otus.ru</base.url>
+        <browser>chrome</browser>
 
     </properties>
 
@@ -72,6 +73,7 @@
                 <configuration>
                     <systemPropertyVariables>
                         <base.url>${base.url}</base.url>
+                        <browser>${browser}</browser>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
