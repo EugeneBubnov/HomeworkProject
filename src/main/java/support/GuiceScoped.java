@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 @ScenarioScoped
 public class GuiceScoped {
-    private WebDriver driver = WebDriverFactory.create();
+    public WebDriver driver = WebDriverFactory.create();
 
     public WebDriver getDriver() {
         return driver;

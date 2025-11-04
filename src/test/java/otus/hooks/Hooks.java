@@ -5,12 +5,12 @@ import io.cucumber.java.After;
 import support.GuiceScoped;
 
 public class Hooks {
-@Inject
+    @Inject
     private GuiceScoped guiceScoped;
 
     @After
-    public void afterScenario(){
-        if (guiceScoped.getDriver() != null){
+    public void afterScenario() {
+        if (guiceScoped.getDriver() != null) {
             guiceScoped.getDriver().quit();
         }
     }

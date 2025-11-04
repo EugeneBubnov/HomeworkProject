@@ -18,7 +18,7 @@
         <webdrivermanager.version>6.3.2</webdrivermanager.version>
         <guice.version>7.0.0</guice.version>
         <assertJ.version>3.27.6</assertJ.version>
-        <cucumber.java.version>7.31.0</cucumber.java.version>
+        <cucumber.java.version>7.2.3</cucumber.java.version>
 
         <maven.version>3.14.1</maven.version>
         <surefire.version>3.5.4</surefire.version>
@@ -85,13 +85,12 @@
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit-platform-engine</artifactId>
             <version>${cucumber.java.version}</version>
-            <scope>test</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-guice -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-guice</artifactId>
-            <version>${cucumber.java.version}</version>
+            <version>5.5.0</version>
         </dependency>
     </dependencies>
 

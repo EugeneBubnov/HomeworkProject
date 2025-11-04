@@ -1,6 +1,5 @@
 package commons;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,29 +10,28 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import support.GuiceScoped;
 
 import java.time.Duration;
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Predicate;
 
 public abstract class AbsCommon {
     protected WebDriver driver;
     protected Actions actions;
     protected WebDriverWait wait;
+    protected GuiceScoped guiceScoped;
 
     protected JavascriptExecutor js;
 
     public AbsCommon(GuiceScoped guiceScoped) {
+        this.guiceScoped = guiceScoped;
         this.driver = guiceScoped.getDriver();
         this.actions = new Actions(driver);
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         this.js = (JavascriptExecutor) driver;
 
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(guiceScoped.getDriver(), this);
     }
 
     // actions template
     public AbsCommon waitSomeTime(int millis) {
-        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(millis));
+        guiceScoped.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(millis));
         return this;
     }
 
