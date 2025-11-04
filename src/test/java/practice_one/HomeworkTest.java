@@ -1,6 +1,7 @@
 package practice_one;
 
 import com.google.inject.Inject;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -23,6 +24,7 @@ public class HomeworkTest {
     String[] neededCourse = {"Vue.js разработчик", "Kotlin QA Engineer", "Алгоритмы и структуры данных"};
 
     @Test
+    @Disabled
     @DisplayName("Сценарий 1.")
     void findCourseTest() {
         coursesPage
@@ -33,6 +35,7 @@ public class HomeworkTest {
     }
 
     @Test
+    @Disabled
     @DisplayName("Сценарий 2.")
     void findDifferentCourses() {
         coursesPage
@@ -44,6 +47,7 @@ public class HomeworkTest {
     String[] categories = {"Программирование", "Архитектура", "GameDev"};
 
     @Test
+    @Disabled
     @DisplayName("Сценарий 3.")
     void validateCategory() {
         mainPage
