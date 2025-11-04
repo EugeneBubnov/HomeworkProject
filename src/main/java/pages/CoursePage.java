@@ -1,5 +1,6 @@
 package pages;
 
+import com.google.inject.Inject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,12 +10,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CoursePage extends AbsBasePage<CoursePage>{
 
-    public CoursePage(GuiceScoped guiceScoped) {
-        super(guiceScoped);
-    }
 
     @FindBy(tagName = "h1")
     protected WebElement heading;
+
+    @Inject
+    public CoursePage(GuiceScoped guiceScoped) {
+        super(guiceScoped);
+    }
 
     public void headingIsValid(String headerName) {
         shouldBeVisible(heading);

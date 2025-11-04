@@ -5,9 +5,6 @@ import io.cucumber.java.ru.Тогда;
 import pages.CoursePage;
 import support.GuiceScoped;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 public class CoursePageSteps {
 
     @Inject

@@ -5,6 +5,7 @@ import com.google.inject.Inject;
 import com.google.inject.Provides;
 import com.google.inject.Singleton;
 import org.openqa.selenium.WebDriver;
+import pages.CoursePage;
 import pages.CoursesPage;
 import pages.MainPage;
 import support.GuiceScoped;
@@ -29,5 +30,11 @@ public class PagesModule extends AbstractModule {
     @Singleton
     public CoursesPage getCoursesPage() {
         return new CoursesPage(guiceScoped);
+    }
+
+    @Provides
+    @Singleton
+    public CoursePage getCoursePage() {
+        return new CoursePage(guiceScoped);
     }
 }
